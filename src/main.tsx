@@ -9,11 +9,14 @@ import { Provider } from 'react-redux'
 //import App from './App.tsx'
 import Dashboard from './Pages/Dashboard.tsx'
 import HomePage from './Pages/HomePage.tsx'
+import Register from './Pages/Register.tsx'
 
 const router = createBrowserRouter(
     createRoutesFromElements(
         <Route>
             <Route path="/" element={<HomePage />} />
+            <Route path="/register" element={<Register />} />
+
             <Route path="/dashboard" element={<Dashboard />} />
         </Route>
     )

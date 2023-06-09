@@ -1,7 +1,7 @@
 import { ENV } from '../../config/ENV'
 import { apiSlice } from '../api'
 
-const USERS_URL = ENV.API + '/api/user'
+const USER_URL = ENV.API + '/api/user'
 const URL = `${ENV.API}`
 
 export const UserApiSLice = apiSlice.injectEndpoints({
@@ -13,7 +13,14 @@ export const UserApiSLice = apiSlice.injectEndpoints({
         }),
         login: builder.mutation({
             query: (data) => ({
-                url: `${USERS_URL}authenticate`,
+                url: `${USER_URL}authenticate`,
+                method: 'POST',
+                body: data
+            })
+        }),
+        register: builder.mutation({
+            query: (data) => ({
+                url: `${USER_URL}/register`,
                 method: 'POST',
                 body: data
             })
@@ -21,4 +28,4 @@ export const UserApiSLice = apiSlice.injectEndpoints({
     })
 })
 
-export const { useCheckHealthQuery, useLoginMutation } = UserApiSLice
+export const { useCheckHealthQuery, useLoginMutation, useRegisterMutation } = UserApiSLice
