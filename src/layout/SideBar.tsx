@@ -13,7 +13,7 @@ interface SidebBarProps {
 
 export default function SideBar({ children }: SidebBarProps) {
     const menus = [
-        { name: 'Dashboard', link: '/', icon: TbLayoutDashboard, key: 1 },
+        { name: 'Dashboard', link: '/dashboard', icon: TbLayoutDashboard, key: 1 },
         { name: 'User', link: '/profile', icon: AiOutlineUser, key: 2 },
         { name: 'Messages', link: '/messages', icon: TiMessages, key: 3 },
         { name: 'Analytics', link: '/analytics', icon: TbFileAnalytics, key: 4, margin: true },
