@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom/client'
 import './index.css'
 import 'rsuite/dist/rsuite-no-reset.min.css'
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom'
+import { store } from './Store/store'
+import { Provider } from 'react-redux'
 
 //import App from './App.tsx'
 import Dashboard from './Pages/Dashboard.tsx'
@@ -18,7 +20,7 @@ const router = createBrowserRouter(
 )
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-    <React.StrictMode>
+    <Provider store={store}>
         <RouterProvider router={router} />
-    </React.StrictMode>
+    </Provider>
 )
