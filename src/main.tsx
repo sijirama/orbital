@@ -9,6 +9,7 @@ import Dashboard from './Pages/Dashboard.tsx'
 import HomePage from './Pages/HomePage.tsx'
 import Register from './Pages/Register.tsx'
 import SignIn from './Pages/SignIn.tsx'
+import ForgotPassword from './Pages/ForgotPassword.tsx'
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -16,7 +17,7 @@ const router = createBrowserRouter(
             <Route path="/" element={<HomePage />} />
             <Route path="/register" element={<Register />} />
             <Route path="/authenticate" element={<SignIn />} />
-            <Route path="/forgotpassword" element={<Dashboard />} />
+            <Route path="/forgotpassword" element={<ForgotPassword />} />
 
             <Route path="/dashboard" element={<Dashboard />} />
         </Route>

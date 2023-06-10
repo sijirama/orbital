@@ -9,3 +9,7 @@ export interface UserAuthenticationType {
     email: string
     password: string
 }
+
+export interface UserForgotPasswordType {
+    email: string
+}
