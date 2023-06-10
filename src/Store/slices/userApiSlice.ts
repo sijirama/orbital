@@ -2,13 +2,13 @@ import { ENV } from '../../config/ENV'
 import { apiSlice } from '../api'
 
 const USER_URL = ENV.API + '/api/user'
-const URL = `${ENV.API}`
+const THE_URL = `${ENV.API}`
 
 export const UserApiSLice = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         checkHealth: builder.query({
             query: (route = 'healthcheck') => ({
-                url: `${URL}/${route}`
+                url: `${THE_URL}/${route}`
             })
         }),
         login: builder.mutation({
