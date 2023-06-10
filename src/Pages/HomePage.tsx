@@ -4,8 +4,9 @@ import { ENV } from '../config/ENV'
 
 export default function HomePage() {
     const { data } = useCheckHealthQuery('healthcheck')
+    console.log(ENV.API)
     if (data) {
-        console.log(`${ENV.API}          ${data}`)
+        console.log(`${data}`)
     }
 
     return (
