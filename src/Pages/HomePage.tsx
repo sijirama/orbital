@@ -12,9 +12,8 @@ export default function HomePage() {
 
     useEffect(() => {
         const fetchstuff = async () => {
-            const respsonse = await fetch(`${ENV.API}/healthcheck`)
-            console.log(ENV.API)
-            console.log(respsonse, '                 success with fetch')
+            const respsonse = await fetch(`https://orbitalbackend.onrender.com/healthcheck`)
+            console.log(await respsonse.json(), ' -------------- with fetch')
         }
         fetchstuff()
     }, [])
