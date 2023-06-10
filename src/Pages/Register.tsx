@@ -136,9 +136,9 @@ export default function Register() {
                                         isSubmitting && isLoading && 'opacity-25'
                                     }`}
                                     type="submit"
-                                    disabled={isSubmitting || isLoading}
+                                    disabled={isLoading}
                                 >
-                                    {isSubmitting || isLoading ? 'Submitting' : 'Sign Up!'}
+                                    {isLoading ? 'Submitting' : 'Sign Up!'}
                                 </button>
                             </Form>
                         )}

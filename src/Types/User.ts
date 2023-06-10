@@ -5,3 +5,7 @@ export interface UserRegisterType {
     lastName: string
     confirmPassword: string
 }
+export interface UserAuthenticationType {
+    email: string
+    password: string
+}
