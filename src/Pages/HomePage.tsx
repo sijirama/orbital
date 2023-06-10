@@ -1,4 +1,4 @@
-import {} from 'react'
+import { useEffect } from 'react'
 import { useCheckHealthQuery } from '../Store/slices/userApiSlice'
 import { ENV } from '../config/ENV'
 import { Link } from 'react-router-dom'
@@ -9,6 +9,15 @@ export default function HomePage() {
     if (data) {
         console.log(`${data}`)
     }
+
+    useEffect(() => {
+        const fetchstuff = async () => {
+            const respsonse = await fetch(`${ENV.API}/healthcheck`)
+            console.log(ENV.API)
+            console.log(respsonse, '                 success with fetch')
+        }
+        fetchstuff()
+    }, [])
 
     return (
         <main className="flex flex-col">
