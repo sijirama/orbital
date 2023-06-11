@@ -23,7 +23,7 @@ export default function ResetPassword() {
             const response = await submit({ password, token }).unwrap()
             console.log(response)
             toast.success('Password reset successful')
-            navigate('/signin')
+            navigate('/authenticate')
         } catch (error) {
             toast.error('Failed to reset password')
             console.error(error)
