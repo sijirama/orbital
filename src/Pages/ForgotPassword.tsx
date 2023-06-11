@@ -49,8 +49,7 @@ export default function ForgotPassword() {
                     <Formik
                         initialValues={initialState}
                         validate={(values) => validate(values)}
-                        onSubmit={(values, { setSubmitting }) => {
-                            console.log(setSubmitting)
+                        onSubmit={(values, {}) => {
                             handleSubmit(values)
                         }}
                     >

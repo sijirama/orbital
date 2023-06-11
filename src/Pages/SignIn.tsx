@@ -2,6 +2,7 @@ import { useLoginMutation } from '../Store/slices/userApiSlice'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { UserAuthenticationType } from '../Types/User'
 import { Link, useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 const initialState: UserAuthenticationType = {
     email: '',
@@ -23,13 +24,12 @@ export default function SignIn() {
                 throw new Error('Email or password field is missing')
             }
             const response = await login({ email, password }).unwrap()
-            //console.log(response)
             if (!response) {
                 throw new Error()
             }
             navigate('/dashboard')
-        } catch (error) {
-            //console.error(error)
+        } catch (error: any) {
+            toast.error(error.message)
         }
     }
 
@@ -58,8 +58,8 @@ export default function SignIn() {
                     <Formik
                         initialValues={initialState}
                         validate={(values) => validate(values)}
-                        onSubmit={(values, { setSubmitting }) => {
-                            console.log(values, setSubmitting)
+                        onSubmit={(values, {}) => {
+                            //console.log(values, setSubmitting)
                             handleSubmit(values)
                         }}
                     >

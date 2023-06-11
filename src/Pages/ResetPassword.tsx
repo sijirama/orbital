@@ -21,7 +21,7 @@ export default function ResetPassword() {
                 throw new Error('Password do not match')
             }
             const data = { password: password, token: token }
-            console.log(data)
+            //console.log(data)
             await submit(data).unwrap()
             toast.success('Password reset successful')
             navigate('/authenticate')
@@ -52,8 +52,7 @@ export default function ResetPassword() {
                     <Formik
                         initialValues={initialState}
                         validate={(values) => validate(values)}
-                        onSubmit={(values, { setSubmitting }) => {
-                            console.log(setSubmitting)
+                        onSubmit={(values, {}) => {
                             handleSubmit(values)
                         }}
                     >

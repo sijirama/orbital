@@ -1,7 +1,7 @@
 import { useRegisterMutation } from '../Store/slices/userApiSlice'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { UserRegisterType } from '../Types/User'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
 const initialState: UserRegisterType = {
@@ -14,6 +14,7 @@ const initialState: UserRegisterType = {
 
 export default function Register() {
     const [register, { isLoading }] = useRegisterMutation()
+    const navigate = useNavigate()
 
     const handleSubmit = async (user: UserRegisterType) => {
         const { firstName, lastName, email, password, confirmPassword } = user
@@ -26,6 +27,7 @@ export default function Register() {
             if (!response) {
                 throw new Error()
             }
+            navigate('/dashboard')
         } catch (error) {
             //console.error(error)
             toast.error('Failed to create account')
@@ -63,8 +65,7 @@ export default function Register() {
                     <Formik
                         initialValues={initialState}
                         validate={(values) => validate(values)}
-                        onSubmit={(values, { setSubmitting }) => {
-                            console.log(values, setSubmitting)
+                        onSubmit={(values, {}) => {
                             handleSubmit(values)
                         }}
                     >
