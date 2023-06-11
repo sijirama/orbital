@@ -24,6 +24,9 @@ export default function SignIn() {
             }
             const response = await login({ email, password }).unwrap()
             //console.log(response)
+            if (!response) {
+                throw new Error()
+            }
             navigate('/dashboard')
         } catch (error) {
             //console.error(error)

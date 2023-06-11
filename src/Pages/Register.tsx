@@ -23,6 +23,9 @@ export default function Register() {
             }
             const response = await register({ firstName, lastName, email, password }).unwrap()
             //console.log(response)
+            if (!response) {
+                throw new Error()
+            }
         } catch (error) {
             //console.error(error)
             toast.error('Failed to create account')
