@@ -21,7 +21,7 @@ export default function ForgotPassword() {
             const response = await submit({ email }).unwrap()
             console.log(response)
             toast.success('Reset token has been sent to your Email address')
-            navigate('/signin')
+            navigate('/authenticate')
         } catch (error) {
             console.error(error)
         }
