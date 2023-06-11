@@ -10,6 +10,11 @@ export interface UserAuthenticationType {
     password: string
 }
 
+export interface UserResetPasswordType {
+    password: string
+    confirmPassword: string
+}
+
 export interface UserForgotPasswordType {
     email: string
 }

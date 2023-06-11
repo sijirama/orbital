@@ -51,7 +51,7 @@ export default function Register() {
                 <img className="w-full h-full object-cover object-center" src="registerbg.jpg" alt="" />
             </section>
             <section className=" w-full md:w-2/3 lg:w-1/2 bg-mylightpink flex justify-center items-center">
-                <div className="w-2/3 md:w-2/3 bg-mylightgray px-5 md:px-7 lg:px-10 py-5 rounded-lg shadow-md">
+                <div className="w-5/6 md:w-2/3 bg-mylightgray px-5 md:px-7 lg:px-10 py-5 rounded-lg shadow-md">
                     <p className="font-bold text-lg lg:text-2xl my-4 lg:my-6 font-geologica -tracking-wide">
                         Welcome to <span className="text-mydarkred"> Orbital</span>
                     </p>

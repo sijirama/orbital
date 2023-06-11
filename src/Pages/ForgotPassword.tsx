@@ -39,7 +39,7 @@ export default function ForgotPassword() {
         <main className=" w-full min-h-screen flex ">
             <section className="w-0"></section>
             <section className=" w-full  bg-mylightpink flex justify-center items-center">
-                <div className="w-2/3 md:w-2/3 lg:w-1/3 bg-mylightgray px-5 md:px-7  lg:px-10 py-5 rounded-lg shadow-md">
+                <div className="w-5/6 md:w-2/3 lg:w-1/3 bg-mylightgray px-5 md:px-7  lg:px-10 py-5 rounded-lg shadow-md">
                     <p className="font-bold text-lg lg:text-2xl my-4 lg:my-5 font-geologica -tracking-wide">
                         Enter your <span className="text-mydarkred"> Email</span>
                     </p>
