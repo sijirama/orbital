@@ -20,7 +20,9 @@ export default function ResetPassword() {
             if (password !== confirmPassword) {
                 throw new Error('Password do not match')
             }
-            const response = await submit({ password, token }).unwrap()
+            const data = { password: password, token: token }
+            console.log(data)
+            const response = await submit(data).unwrap()
             console.log(response)
             toast.success('Password reset successful')
             navigate('/authenticate')
