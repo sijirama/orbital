@@ -26,7 +26,7 @@ export default function ResetPassword() {
             const data = { password: password, token: token }
             console.log(data)
             //const response = await submit(data).unwrap()
-            const URL = `${ENV.API}resetPassword/${token}`
+            const URL = `${ENV.API}/resetPassword/${token}`
             const response = await axiospost(URL, data)
             console.log(response)
             toast.success('Password reset successful')
