@@ -4,13 +4,16 @@ import { UserResetPasswordType } from '../Types/User'
 import { useNavigate, useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
+import { axiospost } from '../utils/axios'
+import { ENV } from '../config/ENV'
+
 const initialState: UserResetPasswordType = {
     password: '',
     confirmPassword: ''
 }
 
 export default function ResetPassword() {
-    const [submit, { isLoading }] = useResetPasswordMutation()
+    const [_submit, { isLoading }] = useResetPasswordMutation()
     const navigate = useNavigate()
     const { token } = useParams()
 
@@ -22,7 +25,9 @@ export default function ResetPassword() {
             }
             const data = { password: password, token: token }
             console.log(data)
-            const response = await submit(data).unwrap()
+            //const response = await submit(data).unwrap()
+            const URL = `${ENV.API}resetPassword/${token}`
+            const response = await axiospost(URL, data)
             console.log(response)
             toast.success('Password reset successful')
             navigate('/authenticate')
