@@ -1,7 +1,7 @@
 import { useResetPasswordMutation } from '../Store/slices/userApiSlice'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { UserResetPasswordType } from '../Types/User'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
 const initialState: UserResetPasswordType = {
@@ -12,6 +12,7 @@ const initialState: UserResetPasswordType = {
 export default function ResetPassword() {
     const [submit, { isLoading }] = useResetPasswordMutation()
     const navigate = useNavigate()
+    const { token } = useParams()
 
     const handleSubmit = async (user: UserResetPasswordType) => {
         const { password, confirmPassword } = user
@@ -19,7 +20,7 @@ export default function ResetPassword() {
             if (password !== confirmPassword) {
                 throw new Error('Password do not match')
             }
-            const response = await submit({ password }).unwrap()
+            const response = await submit({ password, token }).unwrap()
             console.log(response)
             toast.success('Password reset successful')
             navigate('/signin')
