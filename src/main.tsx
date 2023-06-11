@@ -4,6 +4,8 @@ import 'rsuite/dist/rsuite-no-reset.min.css'
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom'
 import { store } from './Store/store'
 import { Provider } from 'react-redux'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 import Dashboard from './Pages/Dashboard.tsx'
 import HomePage from './Pages/HomePage.tsx'
@@ -29,5 +31,6 @@ const router = createBrowserRouter(
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <Provider store={store}>
         <RouterProvider router={router} />
+        <ToastContainer position="top-center" />
     </Provider>
 )

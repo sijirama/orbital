@@ -1,7 +1,8 @@
 import { useForgotPasswordMutation } from '../Store/slices/userApiSlice'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { UserForgotPasswordType } from '../Types/User'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 const initialState: UserForgotPasswordType = {
     email: ''
@@ -9,7 +10,7 @@ const initialState: UserForgotPasswordType = {
 
 export default function ForgotPassword() {
     const [submit, { isLoading }] = useForgotPasswordMutation()
-    //const navigate = useNavigate()
+    const navigate = useNavigate()
 
     const handleSubmit = async (user: UserForgotPasswordType) => {
         const { email } = user
@@ -19,7 +20,8 @@ export default function ForgotPassword() {
             }
             const response = await submit({ email }).unwrap()
             console.log(response)
-            //navigate('/dashboard')
+            toast.success('Reset token has been sent to your Email address')
+            navigate('/signin')
         } catch (error) {
             console.error(error)
         }

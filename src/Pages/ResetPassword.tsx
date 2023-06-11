@@ -1,7 +1,8 @@
 import { useResetPasswordMutation } from '../Store/slices/userApiSlice'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { UserResetPasswordType } from '../Types/User'
-//import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 const initialState: UserResetPasswordType = {
     password: '',
@@ -10,18 +11,20 @@ const initialState: UserResetPasswordType = {
 
 export default function ResetPassword() {
     const [submit, { isLoading }] = useResetPasswordMutation()
-    //const navigate = useNavigate()
+    const navigate = useNavigate()
 
     const handleSubmit = async (user: UserResetPasswordType) => {
         const { password, confirmPassword } = user
         try {
             if (password !== confirmPassword) {
-                throw new Error('Pasword do not match')
+                throw new Error('Password do not match')
             }
             const response = await submit({ password }).unwrap()
             console.log(response)
-            //navigate('/signin')
+            toast.success('Password reset successful')
+            navigate('/signin')
         } catch (error) {
+            toast.error('Failed to reset password')
             console.error(error)
         }
     }
@@ -30,6 +33,8 @@ export default function ResetPassword() {
         const errors: UserResetPasswordType | any = {}
         if (!values.password) {
             errors.password = 'Password is Required'
+        } else if (values.confirmPassword !== values.password) {
+            errors.confirmPassword = 'Passwords do not match'
         }
         return errors
     }
@@ -68,7 +73,7 @@ export default function ResetPassword() {
                                     className="bg-mylightgray font-light focus:outline-none p-1 md:p-2 my-1 md:my-2 border border-gray-300 rounded-md"
                                     placeholder="Confirm Password"
                                     type="password"
-                                    name="password"
+                                    name="confirmPassword"
                                 />
                                 <ErrorMessage
                                     className="text-red-700 font-semibold text-xs"
