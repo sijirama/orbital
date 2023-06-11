@@ -2,6 +2,7 @@ import { useRegisterMutation } from '../Store/slices/userApiSlice'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { UserRegisterType } from '../Types/User'
 import { Link } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 const initialState: UserRegisterType = {
     firstName: '',
@@ -21,9 +22,10 @@ export default function Register() {
                 throw new Error('Passwords do not match')
             }
             const response = await register({ firstName, lastName, email, password }).unwrap()
-            console.log(response)
+            //console.log(response)
         } catch (error) {
-            console.error(error)
+            //console.error(error)
+            toast.error('Failed to create account')
         }
     }
 

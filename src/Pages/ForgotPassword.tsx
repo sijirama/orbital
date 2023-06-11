@@ -18,12 +18,13 @@ export default function ForgotPassword() {
             if (!email) {
                 throw new Error('Email field is missing')
             }
-            const response = await submit({ email }).unwrap()
-            console.log(response)
+            await submit({ email }).unwrap()
+            //console.log(response)
             toast.success('Reset token has been sent to your Email address')
             navigate('/authenticate')
         } catch (error) {
-            console.error(error)
+            //console.error(error)
+            toast.error('Failed to reset password')
         }
     }
 

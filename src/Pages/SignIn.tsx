@@ -23,10 +23,10 @@ export default function SignIn() {
                 throw new Error('Email or password field is missing')
             }
             const response = await login({ email, password }).unwrap()
-            console.log(response)
+            //console.log(response)
             navigate('/dashboard')
         } catch (error) {
-            console.error(error)
+            //console.error(error)
         }
     }
 
