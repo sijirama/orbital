@@ -35,7 +35,7 @@ export const UserApiSLice = apiSlice.injectEndpoints({
         resetPassword: builder.mutation({
             query: (data) => ({
                 url: `${USER_URL}resetPassword`,
-                method: 'POST',
+                method: 'PUT',
                 body: data
             })
         })
