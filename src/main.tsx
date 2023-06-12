@@ -4,7 +4,6 @@ import { store } from './Store/store'
 import { Provider } from 'react-redux'
 import { ToastContainer } from 'react-toastify'
 import { ConfigProvider } from 'antd'
-import { Anttheme } from './utils/AntUtils.ts'
 //import useScreenSize from './Hooks/useScreenSize.tsx'
 
 import 'antd/dist/reset.css'
