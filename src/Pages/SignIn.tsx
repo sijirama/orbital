@@ -3,6 +3,8 @@ import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { UserAuthenticationType } from '../Types/User'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import { useAppDispatch } from '../Store/hooks'
+import { setUser } from '../Store/slices/userSlice'
 
 const initialState: UserAuthenticationType = {
     email: '',
@@ -12,6 +14,7 @@ const initialState: UserAuthenticationType = {
 export default function SignIn() {
     const [login, { isLoading }] = useLoginMutation()
     const navigate = useNavigate()
+    const dispatch = useAppDispatch()
 
     const handleForgotPasswordClick = () => {
         navigate('/forgotpassword')
@@ -27,6 +30,7 @@ export default function SignIn() {
             if (!response) {
                 throw new Error()
             }
+            dispatch(setUser(response.data))
             navigate('/dashboard')
         } catch (error: any) {
             toast.error(error.message)

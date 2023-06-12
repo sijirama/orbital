@@ -1,13 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+interface UserType {
+    firstName: string
+    lastName: string
+    email: string
+    profilePicture: string
+}
 export interface UserInterface {
-    user: {} | null
+    user: UserType | null
 }
 
 const storedUserInfo = localStorage.getItem('user')
 
 const initialState: UserInterface = {
-    user: storedUserInfo
+    user: storedUserInfo ? JSON.parse(storedUserInfo) : null
 }
 
 export const userSlice = createSlice({
@@ -15,10 +21,11 @@ export const userSlice = createSlice({
     initialState,
     reducers: {
         setUser: (state, action) => {
-            ;(state.user = action.payload), localStorage.setItem('user', JSON.stringify(action.payload))
+            state.user = action.payload
+            localStorage.setItem('user', JSON.stringify(action.payload))
         },
         logout: (state, _action) => {
-            state.user = ''
+            state.user = null
             localStorage.removeItem('user')
         }
     }

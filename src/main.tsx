@@ -13,6 +13,7 @@ import Register from './Pages/Register.tsx'
 import SignIn from './Pages/SignIn.tsx'
 import ForgotPassword from './Pages/ForgotPassword.tsx'
 import ResetPassword from './Pages/ResetPassword.tsx'
+import ProtectedRoute from './utils/ProtectedRoute.tsx'
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -23,7 +24,9 @@ const router = createBrowserRouter(
             <Route path="/forgotpassword" element={<ForgotPassword />} />
             <Route path="/resetpassword/:token" element={<ResetPassword />} />
 
-            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="" element={<ProtectedRoute />}>
+                <Route path="/dashboard" element={<Dashboard />} />
+            </Route>
         </Route>
     )
 )

@@ -3,6 +3,8 @@ import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { UserRegisterType } from '../Types/User'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import { useAppDispatch } from '../Store/hooks'
+import { setUser } from '../Store/slices/userSlice'
 
 const initialState: UserRegisterType = {
     firstName: '',
@@ -15,6 +17,7 @@ const initialState: UserRegisterType = {
 export default function Register() {
     const [register, { isLoading }] = useRegisterMutation()
     const navigate = useNavigate()
+    const dispatch = useAppDispatch()
 
     const handleSubmit = async (user: UserRegisterType) => {
         const { firstName, lastName, email, password, confirmPassword } = user
@@ -27,6 +30,7 @@ export default function Register() {
             if (!response) {
                 throw new Error()
             }
+            dispatch(setUser(response.data))
             navigate('/dashboard')
         } catch (error) {
             //console.error(error)
