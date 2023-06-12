@@ -7,6 +7,9 @@ import { CiSaveDown2 } from 'react-icons/ci'
 import { Link } from 'react-router-dom'
 import { Avatar } from 'rsuite'
 import { useAppSelector } from '../Store/hooks'
+import { ConfigProvider } from 'antd'
+import { Anttheme } from '../utils/AntUtils'
+import useScreenSize from '../Hooks/useScreenSize'
 
 interface SidebBarProps {
     children: ReactNode
@@ -24,7 +27,7 @@ export default function SideBar({ children }: SidebBarProps) {
     ]
 
     const user = useAppSelector((state) => state.user.user)
-
+    const screen = useScreenSize()
     const [open, setOpen] = React.useState<boolean>(false)
 
     return (
@@ -86,7 +89,11 @@ export default function SideBar({ children }: SidebBarProps) {
                 </div>
             </div>
 
-            <main className="w-full px-2 lg:px-3 lg:max-w-[1400px] mx-auto py-4 ">{children}</main>
+            <main className="w-full px-2 lg:px-3 lg:max-w-[1400px] mx-auto py-4 ">
+                <ConfigProvider theme={Anttheme} componentSize={screen}>
+                    {children}
+                </ConfigProvider>
+            </main>
         </section>
     )
 }
