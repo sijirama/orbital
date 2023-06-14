@@ -1,6 +1,8 @@
 import SideBar from '../layout/SideBar'
 import { Tabs } from 'antd'
 import { useAppSelector } from '../Store/hooks'
+import UserProfile from '../Components/UserProfile'
+import UserPassword from '../Components/UserPassword'
 
 export default function Profile() {
     const user = useAppSelector((state) => state.user.user)
@@ -13,8 +15,12 @@ export default function Profile() {
                     Welcome to your Profile, <span className="text-mydarkred font-bold">{user?.firstName}</span>.
                 </h1>
                 <Tabs defaultActiveKey="1">
-                    <TabPane tab="My Profile" key="1"></TabPane>
-                    <TabPane tab="Password" key="2"></TabPane>
+                    <TabPane tab="My Profile" key="1">
+                        <UserProfile />
+                    </TabPane>
+                    <TabPane tab="Password" key="2">
+                        <UserPassword />
+                    </TabPane>
                 </Tabs>
             </section>
         </SideBar>

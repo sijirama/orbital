@@ -10,6 +10,7 @@ import 'antd/dist/reset.css'
 import './index.css'
 import 'rsuite/dist/rsuite-no-reset.min.css'
 import 'react-toastify/dist/ReactToastify.css'
+import 'primereact/resources/primereact.min.css'
 
 import Dashboard from './Pages/Dashboard.tsx'
 import HomePage from './Pages/HomePage.tsx'
