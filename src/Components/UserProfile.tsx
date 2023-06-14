@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom'
 export default function UserProfile() {
     const user = useAppSelector((state) => state.user.user)
     const [submit, { isLoading }] = useUpdateUserMutation()
-    const [image, setImage] = useState(user?.profilePicture)
+    const [image, _setImage] = useState(user?.profilePicture)
     const [file, setFile] = useState<File | null>(null)
     const navigate = useNavigate()
 
@@ -45,7 +45,7 @@ export default function UserProfile() {
             toast.error('Failed to update profile')
         }
     }
-    const validate = (values: UserUpdateType) => {}
+    const validate = (_values: UserUpdateType) => {}
 
     useEffect(() => {
         //console.log(file)
@@ -154,7 +154,7 @@ export default function UserProfile() {
 
                                 <button
                                     className={`text-mydarkred font-bold border-2 border-mydarkred rounded-lg w-2/3 lg:w-1/3 my-2 h-10 ${
-                                        isLoading && 'opacity-25'
+                                        isSubmitting && isLoading && 'opacity-25'
                                     }`}
                                     type="submit"
                                     disabled={isLoading}
