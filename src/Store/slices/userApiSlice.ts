@@ -47,6 +47,13 @@ export const UserApiSLice = apiSlice.injectEndpoints({
                 body: data
             })
         }),
+        updatePassword: builder.mutation({
+            query: (data) => ({
+                url: `${USER_URL}updateUserPassword`,
+                method: 'PATCH',
+                body: data
+            })
+        }),
         getUser: builder.mutation({
             query: () => ({
                 url: `${USER_URL}getUser`,
@@ -63,5 +70,6 @@ export const {
     useForgotPasswordMutation,
     useResetPasswordMutation,
     useUpdateUserMutation,
-    useGetUserMutation
+    useGetUserMutation,
+    useUpdatePasswordMutation
 } = UserApiSLice

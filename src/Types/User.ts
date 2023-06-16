@@ -6,6 +6,12 @@ export interface UserRegisterType {
     confirmPassword: string
 }
 
+export interface UserUpdatePasswordType {
+    oldPassword: string
+    password: string
+    confirmPassword: string
+}
+
 export interface UserUpdateType {
     email: string
     firstName: string
